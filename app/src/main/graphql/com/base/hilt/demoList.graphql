@@ -1,0 +1,10 @@
+query DemoList {
+    launches {
+        cursor
+        hasMore
+        launches {
+            id
+            site
+        }
+    }
+}

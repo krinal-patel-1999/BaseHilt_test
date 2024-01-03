@@ -1,0 +1,21 @@
+<resources>
+    <!--    <string name="app_name">BaseHilt</string>-->
+    <string name="app_name">GraphQL</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="lbl_ok">OK</string>
+    <string name="lbl_yes">Yes</string>
+    <string name="lbl_no">No</string>
+    <string name="lbl_cancel">Cancel</string>
+    <string name="lbl_done">Done</string>
+    <string name="socket_time_out">Sorry, Unable to connect server. Please try again</string>
+    <string name="internal_server_error_500">Oops!! There is some problem with request. Please try again</string>
+    <string name="logout_401">You have been logged out because you signed in on another device OR your account is inactive</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
