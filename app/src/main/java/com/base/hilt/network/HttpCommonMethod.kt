@@ -4,6 +4,9 @@ import com.apollographql.apollo3.api.Error
 import com.base.hilt.utils.DebugLog
 import com.base.hilt.utils.Validation
 import com.fasterxml.jackson.databind.JsonNode
+import com.google.gson.GsonBuilder
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 object HttpCommonMethod {
 
@@ -85,4 +88,17 @@ object HttpCommonMethod {
         DebugLog.printI("Error::::: $value")
         return Pair(statusCode, value)
     }
+
+
+    //for Flow api in comment
+    // Base url of the api
+    private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+
+    // create retrofit service
+    fun ApiService(): ApiService =
+        Retrofit.Builder().baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+            .build()
+            .create(ApiService::class.java)
+
 }
