@@ -1,13 +1,22 @@
 package com.base.hilt.network
 
 import com.apollographql.apollo3.api.Error
+import com.base.hilt.ui.cleanArchitecher.data.remote.ApiInterface
+import com.base.hilt.ui.cleanArchitecher.data.repository.RepositoryImpl
+import com.base.hilt.ui.cleanArchitecher.domain.repository.CategoryRepository
 import com.base.hilt.utils.DebugLog
 import com.base.hilt.utils.Validation
 import com.fasterxml.jackson.databind.JsonNode
 import com.google.gson.GsonBuilder
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import javax.inject.Singleton
+@Module
+@InstallIn(SingletonComponent::class)
 object HttpCommonMethod {
 
     const val AUTHORIZATION = "authentication"
@@ -92,13 +101,30 @@ object HttpCommonMethod {
 
     //for Flow api in comment
     // Base url of the api
-    private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+    private const val BASE_URL = "https://www.themealdb.com/"
+
+
 
     // create retrofit service
+
+    @Provides
+    @Singleton
     fun ApiService(): ApiService =
         Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
             .create(ApiService::class.java)
+
+
+    @Provides
+    @Singleton
+    fun provideNewsApi(retrofit: Retrofit): ApiInterface {
+        return retrofit.create(ApiInterface::class.java)
+    }
+
+    @Provides
+    fun provideDomainRepository(apiInterface: ApiInterface): CategoryRepository {
+        return RepositoryImpl(apiInterface)
+    }
 
 }

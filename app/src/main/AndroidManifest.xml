@@ -18,22 +18,17 @@
         android:theme="@style/Theme.BaseHilt"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.flow.FlowActivity"
-            android:exported="false">
-            <!--<intent-filter>
+            android:name=".ui.cleanArchitecher.presentation.CategoryActivity"
+            android:exported="true"
+            android:label="@string/title_activity_category"
+            android:theme="@style/Theme.BaseHilt">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
         </activity>
-       <activity android:name=".ui.flowApicall.CommentFlowApiCallActivity"
-           android:exported="true">
-           <intent-filter>
-               <action android:name="android.intent.action.MAIN" />
 
-               <category android:name="android.intent.category.LAUNCHER" />
-           </intent-filter>
-       </activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
